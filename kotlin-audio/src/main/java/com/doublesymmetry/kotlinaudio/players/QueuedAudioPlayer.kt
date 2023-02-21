@@ -1,5 +1,6 @@
 package com.doublesymmetry.kotlinaudio.players
 
+import android.util.Log
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
@@ -274,6 +275,9 @@ class QueuedAudioPlayer(context: Context, playerConfig: PlayerConfig = PlayerCon
             var artist = metadata.artist ?: audioItem.artist
             var artworkUrl = (audioItem.artwork ?: metadata.artworkUri)?.toString()
             val notificationMetadata = notificationManager.notificationMetadata
+            Log.d("KOTLIN_AUDIO_FORK - artworkUrl", artworkUrl)
+            Log.d("KOTLIN_AUDIO_FORK - audioItem.artwork", audioItem.artwork?.toString())
+            Log.d("KOTLIN_AUDIO_FORK - metadata.artworkUri", metadata.artworkUri?.toString())
             if (isActive && notificationMetadata != null) {
                 title = notificationMetadata.title ?: title
                 artist = notificationMetadata.artist ?: artist
