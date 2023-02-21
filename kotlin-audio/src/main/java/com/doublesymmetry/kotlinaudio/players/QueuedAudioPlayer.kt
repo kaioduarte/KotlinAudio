@@ -230,6 +230,8 @@ class QueuedAudioPlayer(context: Context, playerConfig: PlayerConfig = PlayerCon
     fun replaceItem(index: Int, item: AudioItem) {
         val mediaSource = getMediaSourceFromAudioItem(item)
         queue[index] = mediaSource
+        Log.d("KOTLIN_AUDIO_FORK - replaceItem - artwork", item.artwork ?: "empty")
+        Log.d("KOTLIN_AUDIO_FORK - replaceItem - autoUpdate", automaticallyUpdateNotificationMetadata.toString())
 
         if (currentIndex == index && automaticallyUpdateNotificationMetadata)
             notificationManager.notificationMetadata = NotificationMetadata(item.title, item.artist, item.artwork)
